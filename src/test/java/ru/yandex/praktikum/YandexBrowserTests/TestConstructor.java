@@ -1,4 +1,4 @@
-package ru.yandex.praktikum;
+package ru.yandex.praktikum.YandexBrowserTests;
 
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
@@ -17,6 +17,7 @@ public class TestConstructor {
 
     @Before
     public void setUp() {
+        System.setProperty("webdriver.chrome.driver", "C:\\yandexdriver\\yandexdriver.exe");
         driver = new ChromeDriver();
     }
 
