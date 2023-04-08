@@ -36,10 +36,14 @@ public class TestConstructor {
     public void BunsIsShownInConstructor() {
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
+        new WebDriverWait(driver, 3); //ждем прогрузки страницы
         mainPage.clickFillingButton(); //Переключаем вкладки, чтобы проверить, что нажатие на открытую по умолчанию вкладку действительно ее вызывает
         Assert.assertTrue("Начинки не отобразились", mainPage.isFillingDisplayed());
+        Assert.assertTrue("Вкладка начинок не активна", mainPage.isFillingTabActive());
+        new WebDriverWait(driver, 3); //ждем анимацию прокрутки
         mainPage.clickBunsButton();
         Assert.assertTrue("Булки не отобразились", mainPage.isBunsDisplayed());
+        Assert.assertTrue("Вкладка булок не активна", mainPage.isBunsTabActive());
 
     }
     @Test
@@ -47,8 +51,11 @@ public class TestConstructor {
     public void SauceIsShownInConstructor() {
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
+        new WebDriverWait(driver, 3); //ждем прогрузки страницы
         mainPage.clickSauceButton();
+        new WebDriverWait(driver, 3); //ждем анимацию прокрутки
         Assert.assertTrue("Соусы не отобразились", mainPage.isSauceDisplayed());
+        Assert.assertTrue("Вкладка соусов не активна", mainPage.isSauceTabActive());
 
     }
     @Test
@@ -56,9 +63,14 @@ public class TestConstructor {
     public void FillingIsShownInConstructor() {
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
+        new WebDriverWait(driver, 3); //ждем прогрузки страницы
         mainPage.clickFillingButton();
+        new WebDriverWait(driver, 3); //ждем анимацию прокрутки
         Assert.assertTrue("Начинки не отобразились", mainPage.isFillingDisplayed());
+        Assert.assertTrue("Вкладка начинок не активна", mainPage.isFillingTabActive());
 
     }
 
 }
+
+

@@ -13,11 +13,14 @@ public class MainPage {
     private static final By LOWER_LOGIN_BUTTON =  By.xpath("//main/section[2]/div/button[text()='Войти в аккаунт']");
     private static final By MAKE_ORDER_BUTTON = By.xpath("//main/section[2]/div/button[text()='Оформить заказ']");
     private static final By HEADER = By.xpath(".//main/section[1]/h1");
-    private static final By BUNS_IN_HEADER = By.xpath("//main/section[1]/div[1]/div[1]/span[text()='Булки']");
+    private static final By BUNS_IN_TAB = By.xpath("//main/section[1]/div[1]/div[1]/span[text()='Булки']");
+    private static final By BUNS_IN_TAB_ACTIVE = By.xpath("//div[contains(@class,'tab_tab_type_current')]/span[text()='Булки']");
     private static final By BUNS_IN_LIST = By.xpath("//main/section[1]/div[2]/h2[1][text()='Булки']");
-    private static final By SAUCE_IN_HEADER = By.xpath("//main/section[1]/div[1]/div[2]/span[text()='Соусы']");
+    private static final By SAUCE_IN_TAB = By.xpath("//main/section[1]/div[1]/div[2]/span[text()='Соусы']");
+    private static final By SAUCE_IN_TAB_ACTIVE = By.xpath("//div[contains(@class,'tab_tab_type_current')]/span[text()='Соусы']");
     private static final By SAUCE_IN_LIST = By.xpath("//main/section[1]/div[2]/h2[2][text()='Соусы']");
-    private static final By FILLING_IN_HEADER = By.xpath("//main/section[1]/div[1]/div[3]/span[text()='Начинки']");
+    private static final By FILLING_IN_TAB = By.xpath("//main/section[1]/div[1]/div[3]/span[text()='Начинки']");
+    private static final By FILLING_IN_TAB_ACTIVE = By.xpath("//div[contains(@class,'tab_tab_type_current')]/span[text()='Начинки']");
     private static final By FILLING_IN_LIST = By.xpath("//main/section[1]/div[2]/h2[3][text()='Начинки']");
 
     public MainPage(WebDriver driver) {
@@ -44,21 +47,26 @@ public class MainPage {
         driver.findElement(LOWER_LOGIN_BUTTON).click();
     }
     public void clickBunsButton() {
-        driver.findElement(BUNS_IN_HEADER).click();
+        new WebDriverWait(driver, 3);
+        driver.findElement(BUNS_IN_TAB).click();
         new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(BUNS_IN_LIST));
+                .until(ExpectedConditions.visibilityOfElementLocated(BUNS_IN_TAB_ACTIVE));
+
 
     }
     public void clickSauceButton() {
-        driver.findElement(SAUCE_IN_HEADER).click();
+        new WebDriverWait(driver, 3);
+        driver.findElement(SAUCE_IN_TAB).click();
         new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(SAUCE_IN_LIST));
+                .until(ExpectedConditions.visibilityOfElementLocated(SAUCE_IN_TAB_ACTIVE));
+
     }
     public void clickFillingButton() {
-
-        driver.findElement(FILLING_IN_HEADER).click();
+        new WebDriverWait(driver, 3);
+        driver.findElement(FILLING_IN_TAB).click();
         new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(FILLING_IN_LIST));
+                .until(ExpectedConditions.visibilityOfElementLocated(FILLING_IN_TAB_ACTIVE));
+
 
     }
     public boolean isBunsDisplayed() {
@@ -66,15 +74,29 @@ public class MainPage {
                 .until(ExpectedConditions.visibilityOfElementLocated(BUNS_IN_LIST));
         return (driver.findElement(BUNS_IN_LIST).isDisplayed());
     }
+    public boolean isBunsTabActive() {
+        new WebDriverWait(driver, 3)
+                .until(ExpectedConditions.visibilityOfElementLocated(BUNS_IN_TAB_ACTIVE));
+        return (driver.findElement(BUNS_IN_TAB_ACTIVE).isDisplayed());
+    }
     public boolean isSauceDisplayed() {
         new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.visibilityOfElementLocated(SAUCE_IN_LIST));
         return driver.findElement(SAUCE_IN_LIST).isDisplayed();
-
+    }
+    public boolean isSauceTabActive() {
+        new WebDriverWait(driver, 3)
+                .until(ExpectedConditions.visibilityOfElementLocated(SAUCE_IN_TAB_ACTIVE));
+        return driver.findElement(SAUCE_IN_TAB_ACTIVE).isDisplayed();
     }
     public boolean isFillingDisplayed() {
         new WebDriverWait(driver, 3)
                 .until(ExpectedConditions.visibilityOfElementLocated(FILLING_IN_LIST));
         return (driver.findElement(FILLING_IN_LIST).isDisplayed());
+    }
+    public boolean isFillingTabActive() {
+        new WebDriverWait(driver, 3)
+                .until(ExpectedConditions.visibilityOfElementLocated(FILLING_IN_TAB_ACTIVE));
+        return (driver.findElement(FILLING_IN_TAB_ACTIVE).isDisplayed());
     }
 }
