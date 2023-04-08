@@ -17,8 +17,7 @@ public class ProfilePage {
 
     public boolean isProfileButtonDisplayed() {
         new WebDriverWait(driver, 10).until(driver -> (driver.findElement(PROFILE_BUTTON)));
-        String name = driver.findElement(PROFILE_BUTTON).getText();
-        return (name.equals("Профиль"));
+        return driver.findElement(PROFILE_BUTTON).isDisplayed();
     }
     public void clickLogo() {
         driver.findElement(LOGO_BUTTON).click();

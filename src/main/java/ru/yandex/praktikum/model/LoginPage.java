@@ -34,7 +34,7 @@ public class LoginPage {
         driver.findElement(INPUT_PASSWORD).sendKeys(password);
     }
     public boolean isHeaderDisplayed() {
-        new WebDriverWait(driver, 10).until(driver -> (driver.findElement(By.xpath(".//p[text()='Забыли пароль?']")))); //Ждем полной прогрузки страницы
+        new WebDriverWait(driver, 10).until(driver -> (driver.findElement(FORGOT_PASSWORD_BUTTON))); //Ждем полной прогрузки страницы
         String name = driver.findElement(HEADER).getText();
         return (name.equals("Вход"));
     }
