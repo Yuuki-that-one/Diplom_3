@@ -6,15 +6,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage {
      //https://stellarburgers.nomoreparties.site/login
-    private static final By INPUT_EMAIL = By.cssSelector("#root>div>main>div>form>fieldset:nth-child(1)>div>div>input");
-    private static final By INPUT_PASSWORD = By.cssSelector("#root>div>main>div>form>fieldset:nth-child(2)>div>div>input");
+    private static final By INPUT_EMAIL = By.xpath("(//form[@class='Auth_form__3qKeq mb-20']//div[@class='input__container']//input)[1]");
+    private static final By INPUT_PASSWORD = By.xpath("(//form[@class='Auth_form__3qKeq mb-20']//div[@class='input__container']//input)[2]");
     private final WebDriver driver;
 
     //Кнопка регистрации на странице авторизации
     private static final By REGISTER_BUTTON = By.xpath(".//a[@href='/register']");
     private static final By LOGIN_BUTTON = By.xpath(".//button[text()='Войти']");
 
-    private static final By HEADER = By.xpath("//*[@id=\"root\"]/div/main/div/h2");
+    private static final By HEADER = By.xpath("//div[@class='Auth_login__3hAey']/h2");
     private static final By CONSTRUCTOR_BUTTON = By.className("AppHeader_header__link__3D_hX");
     private static final By FORGOT_PASSWORD_BUTTON =  By.xpath(".//a[@href='/forgot-password']");
     public LoginPage(WebDriver driver) {

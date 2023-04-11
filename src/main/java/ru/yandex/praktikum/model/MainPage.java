@@ -9,19 +9,19 @@ public class MainPage {
     private static final String PAGE_URL = "https://stellarburgers.nomoreparties.site/";
 
     private final WebDriver driver;
-    private static final By UPPER_ACCOUNT_BUTTON = By.xpath(".//header/nav/a[@href='/account']");
-    private static final By LOWER_LOGIN_BUTTON =  By.xpath("//main/section[2]/div/button[text()='Войти в аккаунт']");
-    private static final By MAKE_ORDER_BUTTON = By.xpath("//main/section[2]/div/button[text()='Оформить заказ']");
-    private static final By HEADER = By.xpath(".//main/section[1]/h1");
-    private static final By BUNS_IN_TAB = By.xpath("//main/section[1]/div[1]/div[1]/span[text()='Булки']");
-    private static final By BUNS_IN_TAB_ACTIVE = By.xpath("//div[contains(@class,'tab_tab_type_current')]/span[text()='Булки']");
-    private static final By BUNS_IN_LIST = By.xpath("//main/section[1]/div[2]/h2[1][text()='Булки']");
-    private static final By SAUCE_IN_TAB = By.xpath("//main/section[1]/div[1]/div[2]/span[text()='Соусы']");
-    private static final By SAUCE_IN_TAB_ACTIVE = By.xpath("//div[contains(@class,'tab_tab_type_current')]/span[text()='Соусы']");
-    private static final By SAUCE_IN_LIST = By.xpath("//main/section[1]/div[2]/h2[2][text()='Соусы']");
-    private static final By FILLING_IN_TAB = By.xpath("//main/section[1]/div[1]/div[3]/span[text()='Начинки']");
-    private static final By FILLING_IN_TAB_ACTIVE = By.xpath("//div[contains(@class,'tab_tab_type_current')]/span[text()='Начинки']");
-    private static final By FILLING_IN_LIST = By.xpath("//main/section[1]/div[2]/h2[3][text()='Начинки']");
+    private static final By UPPER_ACCOUNT_BUTTON = By.xpath("//a[@class='AppHeader_header__link__3D_hX'][@href='/account']");
+    private static final By LOWER_LOGIN_BUTTON =  By.xpath("//div[@class='BurgerConstructor_basket__container__2fUl3 mt-10']/button[text()='Войти в аккаунт']");
+    private static final By MAKE_ORDER_BUTTON = By.xpath("//div[@class='BurgerConstructor_basket__container__2fUl3 mt-10']/button[text()='Оформить заказ']");
+    private static final By HEADER = By.xpath("//section[@class='BurgerIngredients_ingredients__1N8v2']/h1");
+    private static final By BUNS_IN_TAB = By.xpath("//section[@class='BurgerIngredients_ingredients__1N8v2']//div[contains(@class, 'tab_tab__1SPyG')]/span[text()='Булки']");
+    private static final By BUNS_IN_TAB_ACTIVE = By.xpath("//section[@class='BurgerIngredients_ingredients__1N8v2']//div[contains(@class,'tab_tab_type_current')]/span[text()='Булки']");
+    private static final By BUNS_IN_LIST = By.xpath("//div[@class='BurgerIngredients_ingredients__menuContainer__Xu3Mo']/h2[text()='Булки']");
+    private static final By SAUCE_IN_TAB = By.xpath("//section[@class='BurgerIngredients_ingredients__1N8v2']//div[contains(@class, 'tab_tab__1SPyG')]/span[text()='Соусы']");
+    private static final By SAUCE_IN_TAB_ACTIVE = By.xpath("//section[@class='BurgerIngredients_ingredients__1N8v2']//div[contains(@class,'tab_tab_type_current')]/span[text()='Соусы']");
+    private static final By SAUCE_IN_LIST = By.xpath("//div[@class='BurgerIngredients_ingredients__menuContainer__Xu3Mo']/h2[text()='Соусы']");
+    private static final By FILLING_IN_TAB = By.xpath("//section[@class='BurgerIngredients_ingredients__1N8v2']//div[contains(@class, 'tab_tab__1SPyG')]/span[text()='Начинки']");
+    private static final By FILLING_IN_TAB_ACTIVE = By.xpath("//section[@class='BurgerIngredients_ingredients__1N8v2']//div[contains(@class,'tab_tab_type_current')]/span[text()='Начинки']");
+    private static final By FILLING_IN_LIST = By.xpath("//div[@class='BurgerIngredients_ingredients__menuContainer__Xu3Mo']/h2[text()='Начинки']");
 
     public MainPage(WebDriver driver) {
         this.driver = driver;

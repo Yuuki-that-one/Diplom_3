@@ -12,7 +12,7 @@ public class ProfilePage {
     }
     private static final By PROFILE_BUTTON =By.xpath("//a[@href=\"/account/profile\"]");
     private static final By CONSTRUCTOR_BUTTON = By.className("AppHeader_header__link__3D_hX");
-    private static final By LOGO_BUTTON = By.cssSelector("#root>div>header>nav>div>a>svg");
+    private static final By LOGO_BUTTON = By.xpath("//header//div[@class='AppHeader_header__logo__2D0X2']");
     private static final By LOGOUT_BUTTON = By.xpath("//button[text()='Выход']");
 
     public boolean isProfileButtonDisplayed() {

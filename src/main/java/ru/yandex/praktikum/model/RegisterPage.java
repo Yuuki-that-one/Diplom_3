@@ -10,12 +10,12 @@ public class RegisterPage {
         this.driver = driver;
     }
 
-    private static final By INPUT_NAME = By.cssSelector("#root>div>main>div>form>fieldset:nth-child(1)>div>div>input");
-    private static final By INPUT_EMAIL = By.cssSelector("#root>div>main>div>form>fieldset:nth-child(2)>div>div>input");
-    private static final By INPUT_PASSWORD = By.cssSelector("#root>div>main>div>form>fieldset:nth-child(3)>div>div>input");
+    private static final By INPUT_NAME = By.xpath("(//form[@class='Auth_form__3qKeq mb-20']//div[@class='input__container']//input)[1]");
+    private static final By INPUT_EMAIL = By.xpath("(//form[@class='Auth_form__3qKeq mb-20']//div[@class='input__container']//input)[2]");
+    private static final By INPUT_PASSWORD =  By.xpath("(//form[@class='Auth_form__3qKeq mb-20']//div[@class='input__container']//input)[3]");
     private static final By INPUT_ERROR_SIGN = By.className("input__error");
-    private static final By REGISTER_BUTTON = By.xpath(".//button[text()='Зарегистрироваться']");
-    private static final By HEADER = By.xpath("//*[@id=\"root\"]/div/main/div/h2");
+    private static final By REGISTER_BUTTON = By.xpath("//form[@class='Auth_form__3qKeq mb-20']//button[text()='Зарегистрироваться']");
+    private static final By HEADER = By.xpath("//div[@class='Auth_login__3hAey']/h2");
     private static final By LOGIN_BUTTON = By.xpath("//a[@href=\"/login\"]");
 
     public void inputName(String name)
