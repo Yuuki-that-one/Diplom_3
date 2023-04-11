@@ -11,6 +11,8 @@ import org.openqa.selenium.html5.WebStorage;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.yandex.praktikum.client.UserClient;
 import ru.yandex.praktikum.model.*;
+import ru.yandex.praktikum.user_model.User;
+import ru.yandex.praktikum.user_model.UserGenerator;
 
 public class TestLogin {
     private WebDriver driver;

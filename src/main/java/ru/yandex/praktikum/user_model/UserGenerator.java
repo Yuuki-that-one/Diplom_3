@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.model;
+package ru.yandex.praktikum.user_model;
 
 import java.util.Locale;
 import com.github.javafaker.Faker;
