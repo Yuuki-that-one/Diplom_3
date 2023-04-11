@@ -32,7 +32,7 @@ public class TestLogin {
     }
     @Test
     @DisplayName("Логин через кнопку 'Войти в аккаунт' внизу главной страницы")
-    public void LoginViaMainPageLowerLoginButton() {
+    public void loginViaMainPageLowerLoginButton() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         RegisterPage registerPage = new RegisterPage(driver);
@@ -61,7 +61,7 @@ public class TestLogin {
     }
     @Test
     @DisplayName("Логин через кнопку 'Личный кабинет'")
-    public void LoginViaMainPageUpperAccountButton() {
+    public void loginViaMainPageUpperAccountButton() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         RegisterPage registerPage = new RegisterPage(driver);
@@ -90,7 +90,7 @@ public class TestLogin {
     }
     @Test
     @DisplayName("Логин через кнопку 'Войти' на странице регистрации")
-    public void LoginViaRegisterPageButton() {
+    public void loginViaRegisterPageButton() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         RegisterPage registerPage = new RegisterPage(driver);
@@ -123,7 +123,7 @@ public class TestLogin {
     }
     @Test
     @DisplayName("Логин через кнопку 'Забыли пароль?'")
-    public void LoginViaForgotPasswordPageButton() {
+    public void loginViaForgotPasswordPageButton() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         RegisterPage registerPage = new RegisterPage(driver);

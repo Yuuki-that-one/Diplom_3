@@ -32,7 +32,7 @@ public class TestProfilePage {
     }
     @Test
     @DisplayName("Открытие профиля авторизованного юзера")
-    public void OpenProfilePageWithLoggedInUser() {
+    public void openProfilePageWithLoggedInUser() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         RegisterPage registerPage = new RegisterPage(driver);
@@ -59,7 +59,7 @@ public class TestProfilePage {
     }
     @Test
     @DisplayName("Переход по клику на лого на странице профиля")
-    public void CheckClickOnLogoAtProfilePage() {
+    public void checkClickOnLogoAtProfilePage() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         RegisterPage registerPage = new RegisterPage(driver);
@@ -88,7 +88,7 @@ public class TestProfilePage {
     }
     @Test
     @DisplayName("Переход по клику на лого на странице профиля")
-    public void CheckClickOnConstructorButtonAtProfilePage() {
+    public void checkClickOnConstructorButtonAtProfilePage() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         RegisterPage registerPage = new RegisterPage(driver);
@@ -117,7 +117,7 @@ public class TestProfilePage {
     }
     @Test
     @DisplayName("Разлогин по клику на кнопку 'Выход' на странице профиля")
-    public void CheckLogoutButtonAtProfilePage() {
+    public void checkLogoutButtonAtProfilePage() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         RegisterPage registerPage = new RegisterPage(driver);

@@ -32,7 +32,7 @@ public class TestConstructor {
     }
     @Test
     @DisplayName("Отображение раздела 'Булки' в конструкторе")
-    public void BunsIsShownInConstructor() {
+    public void bunsIsShownInConstructor() {
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
         new WebDriverWait(driver, 5); //ждем прогрузки страницы
@@ -47,7 +47,7 @@ public class TestConstructor {
     }
     @Test
     @DisplayName("Отображение раздела 'Соусы' в конструкторе")
-    public void SauceIsShownInConstructor() {
+    public void sauceIsShownInConstructor() {
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
         new WebDriverWait(driver, 5); //ждем прогрузки страницы
@@ -59,7 +59,7 @@ public class TestConstructor {
     }
     @Test
     @DisplayName("Отображение раздела 'Начинки' в конструкторе")
-    public void FillingIsShownInConstructor() {
+    public void fillingIsShownInConstructor() {
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
         new WebDriverWait(driver, 5); //ждем прогрузки страницы

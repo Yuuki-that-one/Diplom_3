@@ -34,7 +34,7 @@ public class TestRegistration {
 
     @Test
     @DisplayName("Регистрация, затем сразу логин на той же странице")
-    public void RegistrationAndThenLogin() {
+    public void registrationAndThenLogin() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         RegisterPage registerPage = new RegisterPage(driver);
@@ -60,7 +60,7 @@ public class TestRegistration {
 
     @Test
     @DisplayName("Ошибка регистрации с паролем короче 6 символов")
-    public void CanNotRegisterWithShortPassword() {
+    public void canNotRegisterWithShortPassword() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         RegisterPage registerPage = new RegisterPage(driver);
