@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.GoogleChromeTests;
+package ru.yandex.praktikum;
 
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
@@ -14,11 +14,13 @@ import ru.yandex.praktikum.model.*;
 import ru.yandex.praktikum.user_model.User;
 import ru.yandex.praktikum.user_model.UserGenerator;
 
-public class TestProfilePage {
+public class TestLogin {
     private WebDriver driver;
 
     @Before
     public void setUp() {
+        //Расскомментировать для прогона в Yandex.Browser. По умолчанию запускается Google Chrome
+        //System.setProperty("webdriver.chrome.driver", "C:\\yandexdriver\\yandexdriver.exe");
         driver = new ChromeDriver();
     }
 
@@ -33,12 +35,11 @@ public class TestProfilePage {
         driver.quit();
     }
     @Test
-    @DisplayName("Открытие профиля авторизованного юзера")
-    public void openProfilePageWithLoggedInUser() {
+    @DisplayName("Логин через кнопку 'Войти в аккаунт' внизу главной страницы")
+    public void loginViaMainPageLowerLoginButton() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         RegisterPage registerPage = new RegisterPage(driver);
-        ProfilePage profilePage = new ProfilePage(driver);
         User user = UserGenerator.getRandom();
         mainPage.open();
         mainPage.clickUpperAccountButton();
@@ -50,22 +51,24 @@ public class TestProfilePage {
         registerPage.inputPassword(user.getPassword());
         registerPage.clickRegisterButton();
         Assert.assertTrue("Страница логина после регистрации не открылась", loginPage.isHeaderDisplayed());
+        loginPage.clickConstructorButton(); //возврат на главную
+        
+        mainPage.clickLowerLoginButton();
+        Assert.assertTrue("Страница логина не открылась", loginPage.isHeaderDisplayed());
         loginPage.inputEmail(user.getEmail());
         loginPage.inputPassword(user.getPassword());
         loginPage.clickLoginButton();
         Assert.assertTrue("Главная страница после логина не открылась", mainPage.isHeaderDisplayed());
         Assert.assertTrue("Кнопка заказа для авторизованного пользователя не отобразилась", mainPage.isMakeOrderDisplayed());
 
-        mainPage.clickUpperAccountButton();
-        Assert.assertTrue("Страница профиля не открылась", profilePage.isProfileButtonDisplayed());
+
     }
     @Test
-    @DisplayName("Переход по клику на лого на странице профиля")
-    public void checkClickOnLogoAtProfilePage() {
+    @DisplayName("Логин через кнопку 'Личный кабинет'")
+    public void loginViaMainPageUpperAccountButton() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         RegisterPage registerPage = new RegisterPage(driver);
-        ProfilePage profilePage = new ProfilePage(driver);
         User user = UserGenerator.getRandom();
         mainPage.open();
         mainPage.clickUpperAccountButton();
@@ -77,24 +80,24 @@ public class TestProfilePage {
         registerPage.inputPassword(user.getPassword());
         registerPage.clickRegisterButton();
         Assert.assertTrue("Страница логина после регистрации не открылась", loginPage.isHeaderDisplayed());
-        loginPage.inputEmail(user.getEmail());
-        loginPage.inputPassword(user.getPassword());
-        loginPage.clickLoginButton();
-        Assert.assertTrue("Главная страница после логина не открылась", mainPage.isHeaderDisplayed());
-        Assert.assertTrue("Кнопка заказа для авторизованного пользователя не отобразилась", mainPage.isMakeOrderDisplayed());
-
-        mainPage.clickUpperAccountButton();
-        Assert.assertTrue("Страница профиля не открылась", profilePage.isProfileButtonDisplayed());
-        profilePage.clickLogo();
+        loginPage.clickConstructorButton(); //возврат на главную
         Assert.assertTrue("Главная страница не открылась", mainPage.isHeaderDisplayed());
+        mainPage.clickUpperAccountButton();
+        Assert.assertTrue("Страница логина не открылась", loginPage.isHeaderDisplayed());
+        loginPage.inputEmail(user.getEmail());
+        loginPage.inputPassword(user.getPassword());
+        loginPage.clickLoginButton();
+        Assert.assertTrue("Главная страница после логина не открылась", mainPage.isHeaderDisplayed());
+        Assert.assertTrue("Кнопка заказа для авторизованного пользователя не отобразилась", mainPage.isMakeOrderDisplayed());
+
+
     }
     @Test
-    @DisplayName("Переход по клику на лого на странице профиля")
-    public void checkClickOnConstructorButtonAtProfilePage() {
+    @DisplayName("Логин через кнопку 'Войти' на странице регистрации")
+    public void loginViaRegisterPageButton() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         RegisterPage registerPage = new RegisterPage(driver);
-        ProfilePage profilePage = new ProfilePage(driver);
         User user = UserGenerator.getRandom();
         mainPage.open();
         mainPage.clickUpperAccountButton();
@@ -106,24 +109,29 @@ public class TestProfilePage {
         registerPage.inputPassword(user.getPassword());
         registerPage.clickRegisterButton();
         Assert.assertTrue("Страница логина после регистрации не открылась", loginPage.isHeaderDisplayed());
-        loginPage.inputEmail(user.getEmail());
-        loginPage.inputPassword(user.getPassword());
-        loginPage.clickLoginButton();
-        Assert.assertTrue("Главная страница после логина не открылась", mainPage.isHeaderDisplayed());
-        Assert.assertTrue("Кнопка заказа для авторизованного пользователя не отобразилась", mainPage.isMakeOrderDisplayed());
-
-        mainPage.clickUpperAccountButton();
-        Assert.assertTrue("Страница профиля не открылась", profilePage.isProfileButtonDisplayed());
-        profilePage.clickConstructorButton();
+        loginPage.clickConstructorButton(); //возврат на главную
         Assert.assertTrue("Главная страница не открылась", mainPage.isHeaderDisplayed());
+
+        mainPage.clickUpperAccountButton();
+        Assert.assertTrue("Страница логина не открылась", loginPage.isHeaderDisplayed());
+        loginPage.clickRegisterButton();
+        Assert.assertTrue("Страница регистрации не открылась", registerPage.isHeaderDisplayed());
+        registerPage.clickLoginButton();  //Нажимаем кнопку "Войти" на странице регистрации
+        Assert.assertTrue("Страница логина не открылась", loginPage.isHeaderDisplayed());
+        loginPage.inputEmail(user.getEmail());
+        loginPage.inputPassword(user.getPassword());
+        loginPage.clickLoginButton();
+        Assert.assertTrue("Главная страница после логина не открылась", mainPage.isHeaderDisplayed());
+        Assert.assertTrue("Кнопка заказа для авторизованного пользователя не отобразилась", mainPage.isMakeOrderDisplayed());
+
     }
     @Test
-    @DisplayName("Разлогин по клику на кнопку 'Выход' на странице профиля")
-    public void checkLogoutButtonAtProfilePage() {
+    @DisplayName("Логин через кнопку 'Забыли пароль?'")
+    public void loginViaForgotPasswordPageButton() {
         MainPage mainPage = new MainPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         RegisterPage registerPage = new RegisterPage(driver);
-        ProfilePage profilePage = new ProfilePage(driver);
+        ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage(driver);
         User user = UserGenerator.getRandom();
         mainPage.open();
         mainPage.clickUpperAccountButton();
@@ -135,17 +143,19 @@ public class TestProfilePage {
         registerPage.inputPassword(user.getPassword());
         registerPage.clickRegisterButton();
         Assert.assertTrue("Страница логина после регистрации не открылась", loginPage.isHeaderDisplayed());
+        loginPage.clickConstructorButton(); //возврат на главную
+        Assert.assertTrue("Главная страница не открылась", mainPage.isHeaderDisplayed());
+
+        mainPage.clickUpperAccountButton();
+        Assert.assertTrue("Страница логина не открылась", loginPage.isHeaderDisplayed());
+        loginPage.clickForgotPasswordButton();
+        Assert.assertTrue("Страница восстановления пароля не открылась", forgotPasswordPage.isHeaderDisplayed());
+        forgotPasswordPage.clickLoginButton();
+        Assert.assertTrue("Страница логина не открылась", loginPage.isHeaderDisplayed());
         loginPage.inputEmail(user.getEmail());
         loginPage.inputPassword(user.getPassword());
         loginPage.clickLoginButton();
         Assert.assertTrue("Главная страница после логина не открылась", mainPage.isHeaderDisplayed());
         Assert.assertTrue("Кнопка заказа для авторизованного пользователя не отобразилась", mainPage.isMakeOrderDisplayed());
-
-        mainPage.clickUpperAccountButton();
-        Assert.assertTrue("Страница профиля не открылась", profilePage.isProfileButtonDisplayed());
-        profilePage.clickLogoutButton();
-        Assert.assertTrue("Страница логина после разлогина не открылась", loginPage.isHeaderDisplayed());
     }
-
-
 }

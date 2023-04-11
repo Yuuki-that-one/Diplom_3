@@ -1,4 +1,4 @@
-package ru.yandex.praktikum.GoogleChromeTests;
+package ru.yandex.praktikum;
 
 import io.qameta.allure.junit4.DisplayName;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -20,6 +20,8 @@ public class TestRegistration {
 
     @Before
     public void setUp() {
+        //Расскомментировать для прогона в Yandex.Browser. По умолчанию запускается Google Chrome
+        //System.setProperty("webdriver.chrome.driver", "C:\\yandexdriver\\yandexdriver.exe");
         driver = new ChromeDriver();
     }
 
